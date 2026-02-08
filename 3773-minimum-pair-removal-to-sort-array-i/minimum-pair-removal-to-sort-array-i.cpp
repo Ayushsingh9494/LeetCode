@@ -16,6 +16,7 @@ public:
     int minimumPairRemoval(vector<int>& nums) {
         int steps = 0;
         while(nums.size()>1){
+            if(isSorted(nums)) break;
             int idx = -1;
             int minSum = INT_MAX;
             for(int i=0;i<nums.size()-1;i++){
@@ -25,7 +26,6 @@ public:
                     idx = i;
                 }
             }
-            if(isSorted(nums)) break;
             steps++; 
             nums[idx] = minSum;
             nums.erase(nums.begin()+idx+1);
