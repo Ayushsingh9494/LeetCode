@@ -16,10 +16,10 @@ public:
         ListNode* odd = head;
         ListNode* evenHead = head->next;
         while(even!=nullptr && even->next!=nullptr){
-            odd->next = odd->next->next;
+            odd->next = even->next;
             odd = odd->next;
 
-            even->next = even->next->next;
+            even->next = odd->next;
             even = even->next;
         }
 
