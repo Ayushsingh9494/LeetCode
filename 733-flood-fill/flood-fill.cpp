@@ -1,23 +1,30 @@
 class Solution {
-    void dfs(int r, int c,vector<vector<int>>& image, int color, int currColor, vector<vector<int>>& visited,int m, int n){
-        visited[r][c] = 1;
-        image[r][c] = color;
-        int delRow[] = {0,0,-1,1};
-        int delCol[] = {-1,1,0,0};
-        for(int i=0;i<4;i++){
-            int newR = r + delRow[i];
-            int newC = c + delCol[i];
-            if(newR>=0 && newR<m && newC>=0 && newC<n && image[newR][newC]==currColor && visited[newR][newC]==0){
-                dfs(newR,newC,image,color,currColor,visited,m,n);
-            }
-        }
-    }
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         int m = image.size();
         int n = image[0].size();
-        vector<vector<int>> visited(m,vector<int>(n));
-        dfs(sr,sc,image,color,image[sr][sc],visited,m,n);
-        return image;
+        int path = image[sr][sc];
+        image[sr][sc] = color;
+        if(path==color) return image;
+        queue<pair<int,int>> bfs;
+        bfs.push({sr,sc});
+        int dx[] = {0,0,-1,1};
+        int dy[] = {-1,1,0,0};
+        while(!bfs.empty()){
+            int k = bfs.size();
+                while(k--){
+                int r = bfs.front().first;
+                int c = bfs.front().second;
+                bfs.pop();
+                for(int i=0;i<4;i++){
+                    int nr = r + dx[i];
+                    int nc = c + dy[i];
+                    if(nr<0||nc<0||nr>=m||nc>=n||image[nr][nc]!=path) continue;
+                    image[nr][nc] = color;
+                    bfs.push({nr,nc});
+                }
+            }
+        }
+    return image;
     }
 };
