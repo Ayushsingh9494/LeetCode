@@ -28,17 +28,5 @@ public:
             maxD = max(maxD,upperBound(nums2,nums1[i])-i);
         }
         return maxD;
-        // for(int i=0;i<n1;i++){
-        //     for(int j=0;j<n2;j++){
-        //         if(i<=j && nums1[i]<=nums2[j]){
-        //             res.push_back({i,j});
-        //         }
-        //     }
-        // }
-        // int maxD = 0;
-        // for(auto p: res){
-        //     maxD = max(p.second-p.first,maxD);
-        // }
-        // return maxD;
     }
 };
