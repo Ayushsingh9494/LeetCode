@@ -17,7 +17,7 @@ class Solution {
             int mid = s + (e-s)/2;
             long num = cal(piles,mid);
             if(num<=h){
-                ans = Math.min(ans,mid);
+                ans = mid;
                 e = mid-1;
             }
             else{
