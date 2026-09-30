@@ -10,13 +10,13 @@ class Solution {
     //     return dp[n-1] + dp[n-2];
     // }
     public int climbStairs(int n) {
-        int[] dp = new int[n+1];
-        Arrays.fill(dp,-1);
-        dp[0] = 1;
-        dp[1] = 1;
+        int prev = 1;
+        int curr = 1;
         for(int i=2;i<=n;i++){
-            dp[i] = dp[i-1]+dp[i-2];
+            int temp = curr;
+            curr = prev + curr;
+            prev = temp;
         }
-        return dp[n];
+        return curr;
     }
 }
