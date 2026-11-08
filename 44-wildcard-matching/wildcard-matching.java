@@ -23,7 +23,7 @@ class Solution {
         }
         //if char is '*'
         else{
-            dp[i][j] = (helper(s1,s2,i-1,j-1,dp) || helper(s1,s2,i,j-1,dp) || helper(s1,s2,i-1,j,dp))? 1: 0;
+            dp[i][j] = (helper(s1,s2,i,j-1,dp) || helper(s1,s2,i-1,j,dp))? 1: 0;
         }
         return (dp[i][j]==1);
     }
