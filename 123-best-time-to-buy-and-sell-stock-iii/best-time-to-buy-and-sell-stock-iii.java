@@ -6,7 +6,7 @@ class Solution {
         if(dp[i][a][cap]!=-1) return dp[i][a][cap];
 
         if(a==1){
-            dp[i][a][cap] = Math.max(prices[i]*-1 + helper(i+1,n,cap,0,prices,dp),helper(i+1,n,cap,1,prices,dp));
+            dp[i][a][cap] = Math.max(-prices[i] + helper(i+1,n,cap,0,prices,dp),helper(i+1,n,cap,1,prices,dp));
         }
         else{
             dp[i][a][cap] = Math.max(prices[i] + helper(i+1,n,cap-1,1,prices,dp),helper(i+1,n,cap,0,prices,dp));
