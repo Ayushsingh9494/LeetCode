@@ -3,7 +3,6 @@ class Solution {
         if(i==n) return 0;
 
         //logic for first number
-        if(i==0) return Math.max(1 + helper(i+1,n,nums,dp,i),helper(i+1,n,nums,dp,prev));
         //for rest, we have to check whether the number is greater than the last picked to be eligible
         if(dp[i][prev+1] != -1) return dp[i][prev+1];
         if(prev==-1 || nums[i]>nums[prev]){
